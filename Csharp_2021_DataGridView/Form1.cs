@@ -117,10 +117,8 @@ namespace Csharp_2021_DataGridView
 
 		private void btnFilterKennzeichen_Click(object sender, EventArgs e)
 		{
-			// grdFahrzeuge.DataSource  : Eigenschaft Datenquelle des DataGridView
-			// bindingSource						: Datenquelle
-			// .List										: Ruft alle Elemente der Datenquelle als Liste ab
-			// .OfType<Fahrzeug>()			:	interpretiert die Elemente der Datenquelle als Typ "Fahrzeug"
+			// bindingSource.DataSource : Eigenschaft Datenquelle der Datenquelle => Reicht die Elemente an das DataGridView weiter
+			// meineFahrzeugListe				: Datenquelle : Fahrzeugliste
 			// .Where										:	Einschränkung
 			//		f											:	steht für ein Element der Liste
 			//		=>										:	Lambda-Ausdruck
