@@ -95,6 +95,7 @@ namespace Csharp_2021_DataGridView
 			this.btnSpeichern.TabIndex = 6;
 			this.btnSpeichern.Text = "Speichern";
 			this.btnSpeichern.UseVisualStyleBackColor = true;
+			this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
 			// 
 			// btnAbbrechen
 			// 
@@ -104,6 +105,7 @@ namespace Csharp_2021_DataGridView
 			this.btnAbbrechen.TabIndex = 7;
 			this.btnAbbrechen.Text = "Abbrechen";
 			this.btnAbbrechen.UseVisualStyleBackColor = true;
+			this.btnAbbrechen.Click += new System.EventHandler(this.btnAbbrechen_Click);
 			// 
 			// FormNeuesFahrzeug
 			// 

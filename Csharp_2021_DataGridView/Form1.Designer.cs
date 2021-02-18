@@ -44,9 +44,19 @@ namespace Csharp_2021_DataGridView
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fahrzeugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.löschenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.txtFilterKennzeichen = new System.Windows.Forms.TextBox();
+			this.btnFilterKennzeichen = new System.Windows.Forms.Button();
+			this.btnFilterBezeichnung = new System.Windows.Forms.Button();
+			this.txtFilterBezeichnung = new System.Windows.Forms.TextBox();
+			this.btnAlleAnzeigen = new System.Windows.Forms.Button();
+			this.btnAufsteigendNachGeschwindigkeit = new System.Windows.Forms.Button();
+			this.btnAbsteigendNachBezeichnung = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grdFahrzeuge)).BeginInit();
 			this.menuStrip1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -170,14 +180,15 @@ namespace Csharp_2021_DataGridView
             this.fahrzeugToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1005, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
 			// fahrzeugToolStripMenuItem
 			// 
 			this.fahrzeugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hinzufügenToolStripMenuItem});
+            this.hinzufügenToolStripMenuItem,
+            this.löschenToolStripMenuItem});
 			this.fahrzeugToolStripMenuItem.Name = "fahrzeugToolStripMenuItem";
 			this.fahrzeugToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
 			this.fahrzeugToolStripMenuItem.Text = "Fahrzeug";
@@ -189,11 +200,99 @@ namespace Csharp_2021_DataGridView
 			this.hinzufügenToolStripMenuItem.Text = "Hinzufügen";
 			this.hinzufügenToolStripMenuItem.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem_Click);
 			// 
+			// löschenToolStripMenuItem
+			// 
+			this.löschenToolStripMenuItem.Name = "löschenToolStripMenuItem";
+			this.löschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.löschenToolStripMenuItem.Text = "Löschen";
+			this.löschenToolStripMenuItem.Click += new System.EventHandler(this.löschenToolStripMenuItem_Click);
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.btnAbsteigendNachBezeichnung);
+			this.groupBox2.Controls.Add(this.btnAufsteigendNachGeschwindigkeit);
+			this.groupBox2.Controls.Add(this.btnAlleAnzeigen);
+			this.groupBox2.Controls.Add(this.btnFilterBezeichnung);
+			this.groupBox2.Controls.Add(this.txtFilterBezeichnung);
+			this.groupBox2.Controls.Add(this.btnFilterKennzeichen);
+			this.groupBox2.Controls.Add(this.txtFilterKennzeichen);
+			this.groupBox2.Location = new System.Drawing.Point(609, 40);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(339, 342);
+			this.groupBox2.TabIndex = 2;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Filtern und Sortieren";
+			// 
+			// txtFilterKennzeichen
+			// 
+			this.txtFilterKennzeichen.Location = new System.Drawing.Point(17, 35);
+			this.txtFilterKennzeichen.Name = "txtFilterKennzeichen";
+			this.txtFilterKennzeichen.Size = new System.Drawing.Size(100, 20);
+			this.txtFilterKennzeichen.TabIndex = 0;
+			// 
+			// btnFilterKennzeichen
+			// 
+			this.btnFilterKennzeichen.Location = new System.Drawing.Point(123, 32);
+			this.btnFilterKennzeichen.Name = "btnFilterKennzeichen";
+			this.btnFilterKennzeichen.Size = new System.Drawing.Size(149, 23);
+			this.btnFilterKennzeichen.TabIndex = 1;
+			this.btnFilterKennzeichen.Text = "Nach Kennzeichen filtern";
+			this.btnFilterKennzeichen.UseVisualStyleBackColor = true;
+			this.btnFilterKennzeichen.Click += new System.EventHandler(this.btnFilterKennzeichen_Click);
+			// 
+			// btnFilterBezeichnung
+			// 
+			this.btnFilterBezeichnung.Location = new System.Drawing.Point(123, 61);
+			this.btnFilterBezeichnung.Name = "btnFilterBezeichnung";
+			this.btnFilterBezeichnung.Size = new System.Drawing.Size(149, 23);
+			this.btnFilterBezeichnung.TabIndex = 3;
+			this.btnFilterBezeichnung.Text = "Nach Bezeichnung filtern";
+			this.btnFilterBezeichnung.UseVisualStyleBackColor = true;
+			this.btnFilterBezeichnung.Click += new System.EventHandler(this.btnFilterBezeichnung_Click);
+			// 
+			// txtFilterBezeichnung
+			// 
+			this.txtFilterBezeichnung.Location = new System.Drawing.Point(17, 64);
+			this.txtFilterBezeichnung.Name = "txtFilterBezeichnung";
+			this.txtFilterBezeichnung.Size = new System.Drawing.Size(100, 20);
+			this.txtFilterBezeichnung.TabIndex = 2;
+			// 
+			// btnAlleAnzeigen
+			// 
+			this.btnAlleAnzeigen.Location = new System.Drawing.Point(123, 91);
+			this.btnAlleAnzeigen.Name = "btnAlleAnzeigen";
+			this.btnAlleAnzeigen.Size = new System.Drawing.Size(149, 23);
+			this.btnAlleAnzeigen.TabIndex = 4;
+			this.btnAlleAnzeigen.Text = "Alle anzeigen";
+			this.btnAlleAnzeigen.UseVisualStyleBackColor = true;
+			this.btnAlleAnzeigen.Click += new System.EventHandler(this.btnAlleAnzeigen_Click);
+			// 
+			// btnAufsteigendNachGeschwindigkeit
+			// 
+			this.btnAufsteigendNachGeschwindigkeit.Location = new System.Drawing.Point(123, 165);
+			this.btnAufsteigendNachGeschwindigkeit.Name = "btnAufsteigendNachGeschwindigkeit";
+			this.btnAufsteigendNachGeschwindigkeit.Size = new System.Drawing.Size(149, 40);
+			this.btnAufsteigendNachGeschwindigkeit.TabIndex = 5;
+			this.btnAufsteigendNachGeschwindigkeit.Text = "Aufsteigend nach Geschwindigkeit sortieren";
+			this.btnAufsteigendNachGeschwindigkeit.UseVisualStyleBackColor = true;
+			this.btnAufsteigendNachGeschwindigkeit.Click += new System.EventHandler(this.btnAufsteigendNachGeschwindigkeit_Click);
+			// 
+			// btnAbsteigendNachBezeichnung
+			// 
+			this.btnAbsteigendNachBezeichnung.Location = new System.Drawing.Point(123, 212);
+			this.btnAbsteigendNachBezeichnung.Name = "btnAbsteigendNachBezeichnung";
+			this.btnAbsteigendNachBezeichnung.Size = new System.Drawing.Size(149, 40);
+			this.btnAbsteigendNachBezeichnung.TabIndex = 6;
+			this.btnAbsteigendNachBezeichnung.Text = "Absteigend nach Bezeichnung sortieren";
+			this.btnAbsteigendNachBezeichnung.UseVisualStyleBackColor = true;
+			this.btnAbsteigendNachBezeichnung.Click += new System.EventHandler(this.btnAbsteigendNachBezeichnung_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(1005, 450);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -205,6 +304,8 @@ namespace Csharp_2021_DataGridView
 			((System.ComponentModel.ISupportInitialize)(this.grdFahrzeuge)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -227,6 +328,15 @@ namespace Csharp_2021_DataGridView
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fahrzeugToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem löschenToolStripMenuItem;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Button btnFilterKennzeichen;
+		private System.Windows.Forms.TextBox txtFilterKennzeichen;
+		private System.Windows.Forms.Button btnFilterBezeichnung;
+		private System.Windows.Forms.TextBox txtFilterBezeichnung;
+		private System.Windows.Forms.Button btnAlleAnzeigen;
+		private System.Windows.Forms.Button btnAufsteigendNachGeschwindigkeit;
+		private System.Windows.Forms.Button btnAbsteigendNachBezeichnung;
 	}
 }
 

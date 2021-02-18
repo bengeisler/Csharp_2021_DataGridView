@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csharp_2021_DataGridView
 {
-	class Fahrzeug
+	public class Fahrzeug
 	{
 		// Eigenschaften (Codeausschnitt: prop)
 		public string Bezeichnung { get; set; }
