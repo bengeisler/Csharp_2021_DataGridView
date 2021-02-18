@@ -14,6 +14,9 @@ namespace Csharp_2021_DataGridView
 	{
 		// Datenquelle anlegen
 		BindingSource bindingSource = new BindingSource();
+
+		// Liste anlegen, in der alle Objekte gespeichert werden
+		List<Fahrzeug> meineFahrzeugListe = new List<Fahrzeug>();
 		public Form1()
 		{
 			InitializeComponent();
@@ -21,24 +24,27 @@ namespace Csharp_2021_DataGridView
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			// Objekte der Liste hinzufügen
+			meineFahrzeugListe.Add(new Fahrzeug("Polo", "R-AD-123", 10));
+			meineFahrzeugListe.Add(new Fahrzeug("BMW", "N-XY-123", 50));
+			meineFahrzeugListe.Add(new Fahrzeug("Golf", "SAD-AB-456", 30));
+
+			// Liste an bindingSource übergeben
+			bindingSource.DataSource = meineFahrzeugListe;
+
 			// Datenquelle mit DataGridView verbinden
 			grdFahrzeuge.DataSource = bindingSource;
-
-			// Datenquelle befüllen
-			bindingSource.Add(new Fahrzeug("Polo", "R-AD-123", 10));
-			bindingSource.Add(new Fahrzeug("BMW", "N-XY-123", 50));
-			bindingSource.Add(new Fahrzeug("Golf", "SAD-AB-456", 30));
 
 			// Datenbindungen einrichten
 			// Eigenschaften der Steuerelemente werden an die Datenquelle
 			// gebunden => Dadurch werden automatisch die Daten des aktuell
 			// ausgewählten Elements angezeigt
 			txtBeschreibung.DataBindings.Add(new Binding(
-				"Text", grdFahrzeuge.DataSource, "Bezeichnung"));
+				"Text", bindingSource, "Bezeichnung"));
 			txtKennzeichen.DataBindings.Add(new Binding(
-				"Text", grdFahrzeuge.DataSource, "Kennzeichen"));
+				"Text", bindingSource, "Kennzeichen"));
 			txtGeschwindigkeit.DataBindings.Add(new Binding(
-				"Text", grdFahrzeuge.DataSource, "Geschwindigkeit"));
+				"Text", bindingSource, "Geschwindigkeit"));
 		}
 
 		private void ValidateOnEnter(object sender, KeyEventArgs e)
@@ -122,16 +128,16 @@ namespace Csharp_2021_DataGridView
 			//														den in der txtFilterKennzeichen eingegebenen Text enthält
 			// .ToList()								:	Alle Elemente, für die die oben eingegebene Einschränkung gilt
 			//													  der Liste hinzufügen
-			grdFahrzeuge.DataSource =
-				bindingSource.List.OfType<Fahrzeug>()
+			bindingSource.DataSource =
+				meineFahrzeugListe
 				.Where(f => f.Kennzeichen.Contains(txtFilterKennzeichen.Text))
 				.ToList();
 		}
 
 		private void btnFilterBezeichnung_Click(object sender, EventArgs e)
 		{
-			grdFahrzeuge.DataSource =
-				bindingSource.List.OfType<Fahrzeug>()
+			bindingSource.DataSource =
+				meineFahrzeugListe
 				.Where(f => f.Bezeichnung.Contains(txtFilterBezeichnung.Text))
 				.ToList();
 		}
@@ -139,21 +145,21 @@ namespace Csharp_2021_DataGridView
 		private void btnAlleAnzeigen_Click(object sender, EventArgs e)
 		{
 			// Im DataGridView werden alle Elemente der Datenquelle angezeigt
-			grdFahrzeuge.DataSource = bindingSource;
+			bindingSource.DataSource = meineFahrzeugListe;
 		}
 
 		private void btnAufsteigendNachGeschwindigkeit_Click(object sender, EventArgs e)
 		{
-			grdFahrzeuge.DataSource =
-				bindingSource.List.OfType<Fahrzeug>()
+			bindingSource.DataSource =
+				meineFahrzeugListe
 				.OrderBy(f => f.Geschwindigkeit)
 				.ToList();
 		}
 
 		private void btnAbsteigendNachBezeichnung_Click(object sender, EventArgs e)
 		{
-			grdFahrzeuge.DataSource =
-				bindingSource.List.OfType<Fahrzeug>()
+			bindingSource.DataSource =
+				meineFahrzeugListe
 				.OrderByDescending(f => f.Bezeichnung)
 				.ToList();
 		}
